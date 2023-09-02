@@ -1,2 +1,2 @@
 #!/bin/nash
-chmod a+x hello
+chmod ugo+x hello
