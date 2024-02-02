@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # This script pings the IP address passed as argument to it
 
-if [ -z "$1" ]
+# Check for argument
+if [ $# -eq 0 ]
 then
 	echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
 else
