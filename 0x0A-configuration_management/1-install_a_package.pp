@@ -1,8 +1,8 @@
-# Define package and version variables
+# This script install Flask from pip3
+
 $package_name = 'Flask'
 $version = '2.1.0'
 
-# Install Flask using pip3 with sudo
 exec { 'install_flask':
   command => "sudo pip3 install ${package_name}==${version}",
   path    => ['/usr/bin', '/usr/local/bin'],
