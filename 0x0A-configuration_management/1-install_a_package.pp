@@ -1,13 +1,10 @@
-# Define a resource class for managing pip packages
-class { 'pip3' : }
+# Define package and version variables
+$package_name = 'Flask'
+$version = '2.1.0'
 
-# Define a resource for installing Flask
-package { 'python3-flask':
-  ensure => '2.1.0',
-  provider => 'pip3',
-}
-
-# Ensure pip3 is installed
-package { 'python3-pip':
-  ensure => installed,
+# Install Flask using pip3 with sudo
+exec { 'install_flask':
+  command => "sudo pip3 install ${package_name}==${version}",
+  path    => ['/usr/bin', '/usr/local/bin'],
+  unless  => "pip3 show ${package_name} | grep Version | grep -q ${version}",
 }
