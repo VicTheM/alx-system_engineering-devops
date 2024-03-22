@@ -1,7 +1,13 @@
-# Install flask from pip.
+# Define a resource class for managing pip packages
+class { 'pip3' : }
 
-exec { 'install flask':
-  command =>  'sudo pip3 install flask==2.1.0',
-  path    =>  '/usr/bin/',
-  unless  =>  'pip3 list | grep flask',
+# Define a resource for installing Flask
+package { 'python3-flask':
+  ensure => '2.1.0',
+  provider => 'pip3',
+}
+
+# Ensure pip3 is installed
+package { 'python3-pip':
+  ensure => installed,
 }
