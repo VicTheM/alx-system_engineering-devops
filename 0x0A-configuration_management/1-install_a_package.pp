@@ -1,10 +1,15 @@
-# This script install Flask from pip3
+class flask {
+  # Ensure python3-pip is installed
+  package {'python3-pip':
+    provider => 'apt',
+  }
 
-$package_name = 'Flask'
-$version = '2.1.0'
-
-exec { 'install_flask':
-  command => "sudo pip3 install ${package_name}==${version}",
-  path    => ['/usr/bin', '/usr/local/bin'],
-  unless  => "pip3 show ${package_name} | grep Version | grep -q ${version}",
+  # Install Flask 2.1.0 via pip3
+  exec {'install-flask':
+    path     => '/usr/bin:$PATH',
+    command  => 'pip3 install Flask==2.1.0',
+    require  => Package['python3-pip'],
+    notify   => Service['httpd'],
+    logoutput => true,
+  }
 }
