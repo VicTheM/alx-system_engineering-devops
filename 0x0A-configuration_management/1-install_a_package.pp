@@ -1,3 +1,5 @@
+# installs Flask 2.1.0
+
 class flask {
   # Ensure python3-pip is installed
   package {'python3-pip':
