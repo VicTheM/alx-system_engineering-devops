@@ -2,7 +2,7 @@
 
 # Connects to a remote server using ssh
 remote_host=100.26.212.45
-path="~/.ssh/school"
+path="$HOME/.ssh/school"
 username="ubuntu"
 
 ssh -i "$path" -t "$username"@"$remote_host"
