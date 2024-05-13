@@ -10,3 +10,5 @@ on port alone<br>
 
 >>> woo, firewalls are cool!, with firewall you could
 finally own your system.
+
+- So the fire wall was configured on only one of my servers
