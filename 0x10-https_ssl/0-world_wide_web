@@ -18,6 +18,6 @@ then
 		display "$sub.$1" "$sub"
 	done
 else
-	display "$2" "$2"
+	display "$2.$1" "$2"
 fi
 
