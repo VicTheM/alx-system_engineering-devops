@@ -11,7 +11,7 @@ display () {
 	return 0
 }
 
-if [ -z "$2" ]
+if [ "$#" -eq 1 ]
 then
 	for sub in "${sub_domains[@]}"; do
 		display "$sub$1"
