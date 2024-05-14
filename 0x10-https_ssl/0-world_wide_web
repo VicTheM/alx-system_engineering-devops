@@ -2,10 +2,11 @@
 # This script analyses the record type of a Domain
 
 # This function prints the record in a formated manner
-sub_domains=("www." "lb-01." "web-01." "web-02.")
+sub_domains=("www" "lb-01" "web-01" "web-02")
+
 
 display () {
-	echo -n "The subdomain $1 is a "
+	echo -n "The subdomain $2 is a "
 	dig "$1" | grep -A1 "ANSWER SECTION" | awk '/[0-9].[0-9]./ {print $4 " record and points to " $5}'
 
 	return 0
@@ -14,9 +15,9 @@ display () {
 if [ "$#" -eq 1 ]
 then
 	for sub in "${sub_domains[@]}"; do
-		display "$sub$1"
+		display "$sub.$1" "$sub"
 	done
 else
-	display "$2"
+	display "$2" "$2"
 fi
 
