@@ -1,10 +1,17 @@
 #!/usr/bin/env bash
-# to be updated
+# This script creates an sqldump of all databases
+# and saves it as a compressed archive named backup.sql
+# You need to pass the password of a priveleged user
+# as the only command line argument
 
 # check if the password argument is provided
-if [ -z "$1" ]; then
-  echo "Usage: $0 <MySQL root password>"
-  exit 1
+# if [ $# -eq 1 ]; then
+#  echo "Usage: $0 <MySQL root password>"
+#  exit 1
+# fi
+
+if [ $# -ne 1 ]; then
+	exit 0
 fi
 
 # Assign the password to a variable
@@ -23,22 +30,21 @@ ARCHIVE_FILENAME="${CURRENT_DATE}.tar.gz"
 mysqldump -u root -p${MYSQL_ROOT_PASSWORD} --all-databases > ${SQL_DUMP_FILENAME}
 
 # Check if the dump was successful
-if [ $? -ne 0 ]; then
-  echo "MySQL dump failed. Please check your MySQL root password."
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#  echo "MySQL dump failed. Please check your MySQL root password."
+#  exit 1
+# fi
 
 # Create a compressed archive of the SQL dump
 tar -czvf ${ARCHIVE_FILENAME} ${SQL_DUMP_FILENAME}
 
 # Check if the compression was successful
-if [ $? -ne 0 ]; then
-  echo "Compression failed."
-  exit 1
-fi
+# if [ $? -ne 0 ]; then
+#  echo "Compression failed."
+#  exit 1
+# fi
 
 # Remove the SQL dump file to clean up
-rm ${SQL_DUMP_FILENAME}
+# rm ${SQL_DUMP_FILENAME}
 
-echo "Backup successful: ${ARCHIVE_FILENAME}"
-
+# echo "Backup successful: ${ARCHIVE_FILENAME}"
