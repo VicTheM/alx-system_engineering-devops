@@ -1,1 +1,44 @@
-balh balh balh
+#!/usr/bin/env bash
+# to be updated
+
+# check if the password argument is provided
+if [ -z "$1" ]; then
+  echo "Usage: $0 <MySQL root password>"
+  exit 1
+fi
+
+# Assign the password to a variable
+MYSQL_ROOT_PASSWORD=$1
+
+# Get the current date in day-month-year format
+CURRENT_DATE=$(date +%d-%m-%Y)
+
+# Define the filename for the SQL dump
+SQL_DUMP_FILENAME="backup.sql"
+
+# Define the filename for the compressed archive
+ARCHIVE_FILENAME="${CURRENT_DATE}.tar.gz"
+
+# Generate the MySQL dump
+mysqldump -u root -p${MYSQL_ROOT_PASSWORD} --all-databases > ${SQL_DUMP_FILENAME}
+
+# Check if the dump was successful
+if [ $? -ne 0 ]; then
+  echo "MySQL dump failed. Please check your MySQL root password."
+  exit 1
+fi
+
+# Create a compressed archive of the SQL dump
+tar -czvf ${ARCHIVE_FILENAME} ${SQL_DUMP_FILENAME}
+
+# Check if the compression was successful
+if [ $? -ne 0 ]; then
+  echo "Compression failed."
+  exit 1
+fi
+
+# Remove the SQL dump file to clean up
+rm ${SQL_DUMP_FILENAME}
+
+echo "Backup successful: ${ARCHIVE_FILENAME}"
+
