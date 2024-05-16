@@ -2,4 +2,4 @@
 # This script executes a command as another user
 # The user must be passed as argument to the script
 
-su "$1" -c whoami
+sudo -u "$1" whoami
