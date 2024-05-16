@@ -2,4 +2,4 @@
 # This script executes a command as another user
 # The user must be passed as argument to the script
 
-runuser "$1" -c whoami
+su "$1" -c whoami
