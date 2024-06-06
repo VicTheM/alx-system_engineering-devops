@@ -1,4 +1,3 @@
-#!/usr/bin/python3
 """This script queries the Reddit API and prints the titles of the first 10
 hot posts listed for a given subreddit."""
 
@@ -18,6 +17,3 @@ def top_ten(subreddit):
             print(post['data']['title'])
     else:
         print(None)
-
-if __name__ == "__main__":
-    top_ten("programming")
