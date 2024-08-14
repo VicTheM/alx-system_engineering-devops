@@ -6,4 +6,4 @@
 # username="ubuntu"
 
 # ssh -i "$path" -t "$username"@"$remote_host"
-ssh -i ~/.ssh/school ubuntu@100.26.212.45
+ssh -i ~/.ssh/school ubuntu@52.86.158.49
