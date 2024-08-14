@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # Connects to a remote server using ssh
-# remote_host=100.26.212.45
+# remote_host=command line para,m
 # path="$HOME/.ssh/school"
 # username="ubuntu"
+ip=$1
 
 # ssh -i "$path" -t "$username"@"$remote_host"
-ssh -i ~/.ssh/school ubuntu@52.86.158.49
+ssh -i ~/.ssh/school ubuntu@$ip
