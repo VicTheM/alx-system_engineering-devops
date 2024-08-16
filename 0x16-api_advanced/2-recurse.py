@@ -1,12 +1,17 @@
 #!/usr/bin/python3
-"""This script houses a function that recursively queries the Reddit API and
-returns a list containing the titles of all hot articles for a given subreddit."""
+"""
+This script houses a function that recursively queries the Reddit API
+and returns a list containing the titles of all hot articles for a
+given subreddit.
+"""
 
 import requests
+
 
 def recurse(subreddit, hot_list=[]):
     """Recursively returns all hot artical for
     a given subreddit"""
+
     url = "https://www.reddit.com/r/{}/hot.json?".format(subreddit)
     headers = {"User-Agent": "VictoryBot"}
 
@@ -23,8 +28,5 @@ def recurse(subreddit, hot_list=[]):
 
     if not hot_list:
         return None
-    
+
     return hot_list
-
-
-print(len(recurse("programming")))

@@ -9,7 +9,11 @@ import requests
 def number_of_subscribers(subreddit):
     """This function returns the number of
     subscribers to subreddit on the reddit
-    site."""
+    site.
+
+    params:
+        subreddit - the subreddit to query
+    """
 
     header = {
             'User-Agent': 'VictoryBot'
