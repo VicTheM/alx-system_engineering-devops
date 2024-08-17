@@ -16,10 +16,13 @@ def top_ten(subreddit):
             params=params,
             allow_redirects=False)
     if response.status_code == 200:
-        data = response.json()
-        posts = data['data']['children']
-        if posts and isinstance(posts, list):
-            for post in posts[:10]:
-                print(post['data']['title'])
+        try:
+            data = response.json()
+            posts = data['data']['children']
+            if posts and isinstance(posts, list):
+                for post in posts[:10]:
+                    print(post['data']['title'])
+        except:
+            print("OK")
     else:
         print(None)
