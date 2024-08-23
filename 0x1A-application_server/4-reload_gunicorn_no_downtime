@@ -1,19 +1,5 @@
 #!/usr/bin/env bash
 #This script reloads Gunicorn in a graceful way.
 
-# systemctl status gunicorn | grep -oE 'Main PID: [0-9]+' | awk '{ print $3 }' | xargs kill -HUP
-#!/bin/bash
-
-# This script reloads Gunicorn gracefully to apply new code or configuration
-
 # Get the process ID (PID) of the master Gunicorn process
-GUNICORN_PID=$(pgrep -f 'gunicorn')
-
-# Check if the PID was found
-if [ -z "$GUNICORN_PID" ]; then
-    exit 0
-fi
-
-# Reload Gunicorn gracefully
-kill -HUP $GUNICORN_PID
-
+pgrep -f 'gunicorn' | head -n 1 | kill -HUP
