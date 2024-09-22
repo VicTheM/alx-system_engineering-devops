@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#This script reloads Gunicorn in a graceful way.
+
+# Get the process ID (PID) of the master Gunicorn process
+pgrep -f 'gunicorn' | head -n 1 | xargs -I {} kill -HUP {}
